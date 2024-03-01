@@ -64,20 +64,27 @@ input.value = '';
 let current_page = 1;
 let current_query;
 
-function handle() {
-    spinner.classList.remove('is-hidden')
-    current_page++
-    getImages(current_query, 15, current_page)
-        .then(data => {
-        createMarkup(data.hits)
-        spinner.scrollIntoView()
-        spinner.classList.add('is-hidden')
-    }).catch(e => alert(e.message))
-}
-
 
 form.addEventListener('submit', loadImg);
-btnLoadMore.addEventListener('click', handle);
+
+
+btnLoadMore.addEventListener('click', event => {
+    spinner.classList.remove('is-hidden');
+    current_page++;
+    getImages(current_query, current_page, 15)
+        .then(data => {
+        createMarkup(images);
+    const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
+    captionsData: 'alt',
+    captionDelay: 300,
+    });
+            lightbox.refresh();
+            spinner.scrollIntoView;
+            spinner.classList.add('is-hidden')
+        })
+    .catch(e => alert(e.message))
+
+});
 
 function errorNotification(){
     iziToast.error({
