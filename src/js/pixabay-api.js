@@ -7,10 +7,10 @@ export default async function getImages(inputValue, amount, quantity) {
     const imageType = 'photo';
     const orientationImage = 'horizontal';
     const safesearch = 'true';
-    const page = '1';
-    const per_page = '15';
+    // const page = '1';
+    // const per_page = '15';
 
-    const response = await fetch(`${basicURL}?key=${KEY}&q=${query}&image_type=${imageType}&orientation=${orientationImage}&safesearch=${safesearch}&page=${page}&per_page=${per_page}`);
+    const response = await fetch(`${basicURL}?key=${KEY}&q=${query}&image_type=${imageType}&orientation=${orientationImage}&safesearch=${safesearch}&page=${amount}&per_page=${quantity}`);
 
     if (!response.ok) {
         throw new Error(response.status);
