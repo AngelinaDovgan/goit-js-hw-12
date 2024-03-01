@@ -36,7 +36,7 @@ function loadImg(event) {
             if (currentHits > totalHits) {
                 btnLoadMore.classList.add('is-hidden')
             
-                return information;
+                return information();
             }
     current_page = 1
     current_query = inputValue
