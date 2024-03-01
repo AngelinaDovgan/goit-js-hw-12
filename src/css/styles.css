@@ -4,7 +4,7 @@
   | default @import url()
   |============================
 */
-@import url('./reset.css');
+/* @import url('./reset.css');
 @import url('./vite-promo.css');
 @import url('./header.css');
 
@@ -22,4 +22,94 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+} */
+
+body {
+  width: 1440px;
+}
+
+.gallery {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  column-gap: 24px;
+}
+
+.img-reactions {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-sub {
+  color: white;
+  background-color: darkcyan;
+  font-size: 24x;
+  border-style: none;
+  border-radius: 4px;
+  height: 25px;
+}
+
+.input-img {
+  height: 15px;
+}
+
+.btn-sub:hover {
+  background-color: cyan;
+}
+
+div {
+  text-align: center;
+}
+
+.loading {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 35px;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loading::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: green;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.button>.spinner.is-hidden {
+  display: none;
 }
