@@ -73,8 +73,8 @@ btnLoadMore.addEventListener('click', event => {
     current_page++;
     getImages(current_query, current_page, 15)
         .then(data => {
-            const images = data.hits;
-        createMarkup(images);
+        const images = data.hits;
+        list.innerHTML = createMarkup(images);
     const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
     captionsData: 'alt',
     captionDelay: 300,
