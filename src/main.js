@@ -38,8 +38,8 @@ function loadImg(event) {
             
                 return information();
             }
-    current_page = 1
-    current_query = inputValue
+
+            current_query = inputValue;
     const images = data.hits;
     if (!images.length) {
     list.innerHTML = '';
@@ -61,7 +61,7 @@ loading.style.display = 'none';
 input.value = '';
 }
 
-let current_page = 1;
+let current_page;
 let current_query;
 
 
