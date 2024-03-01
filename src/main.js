@@ -70,7 +70,7 @@ form.addEventListener('submit', loadImg);
 
 btnLoadMore.addEventListener('click', event => {
     spinner.classList.remove('is-hidden');
-    current_page++;
+    current_page += 1;
     getImages(current_query, current_page, 15)
         .then(data => {
         const images = data.hits;
