@@ -14,6 +14,9 @@ const loading = document.querySelector(".loading");
 const btnLoadMore = document.querySelector('[data-action="load-more"]');
 const spinner = document.querySelector(".spinner");
 
+let current_page = 1;
+let current_query;
+
 loading.style.display = 'none';
  btnLoadMore.style.display = 'none';
 
@@ -60,9 +63,6 @@ loading.style.display = 'none';
 });
 input.value = '';
 }
-
-let current_page;
-let current_query;
 
 
 form.addEventListener('submit', loadImg);
