@@ -22,28 +22,21 @@ loading.style.display = 'none';
 
 function loadImg(event) {
     event.preventDefault();
-    list.innerHTML = null;
+    list.innerHTML = '';
 
     const inputValue = input.value.trim();
-    if (!inputValue) {
-        return warningNotification();
-    }
-
+   
     loading.style.display = 'inline-block';
     btnLoadMore.style.display = 'inline-block';
 
     getImages(inputValue, 1, 15)
         .then(data => {
-            const totalHits = data.totalHits || 0;
-            const currentHits = current_page * 15;
-            if (currentHits > totalHits) {
-                btnLoadMore.classList.add('is-hidden')
-            
-                return information();
-            }
-
-            current_query = inputValue;
-    const images = data.hits;
+        const images = data.hits;  
+        if (images.length < 15) {
+            btnLoadMore.style.display = 'none';
+            return information();
+            } 
+    current_query = inputValue;
     if (!images.length) {
     list.innerHTML = '';
     return errorNotification();
@@ -53,9 +46,8 @@ function loadImg(event) {
     captionsData: 'alt',
     captionDelay: 300,
     });
-    lightbox.refresh();
+        lightbox.refresh();
     }
-
 })
 .catch(error => console.log(error))
 .finally(() => {
@@ -65,7 +57,14 @@ input.value = '';
 }
 
 
-form.addEventListener('submit', loadImg);
+// form.addEventListener('submit', loadImg);
+
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    current_page = 1; 
+    loadImg(event);
+});
+
 
 
 btnLoadMore.addEventListener('click', event => {
@@ -73,7 +72,11 @@ btnLoadMore.addEventListener('click', event => {
     current_page += 1;
     getImages(current_query, current_page, 15)
         .then(data => {
-        const images = data.hits;
+            const images = data.hits;
+         if (images.length < 15) {
+            btnLoadMore.style.display = 'none';
+            return information();
+            } 
 list.insertAdjacentHTML('beforeend', createMarkup(images));
     const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
     captionsData: 'alt',
@@ -111,6 +114,6 @@ function information() {
        title: 'Info',
        position: "topCenter",
        backgroundColor: "blue",
-       message: 'Упс! Більше немає зображень...',
+       message: "We're sorry, but you've reached the end of search results.",
    });
 }
