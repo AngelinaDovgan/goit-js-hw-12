@@ -85,8 +85,8 @@ btnLoadMore.addEventListener('click', event => {
             const images = data.hits;
             if (images.length < 15) {
                 btnLoadMore.style.display = 'none';
-                return information();
-            } else {
+                information();
+            } 
                 list.insertAdjacentHTML('beforeend', createMarkup(images));
                 const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
                     captionsData: 'alt',
@@ -95,9 +95,7 @@ btnLoadMore.addEventListener('click', event => {
                 lightbox.refresh();
                 spinner.scrollIntoView();
                 spinner.classList.add('is-hidden')
-            }
             })
-
         .catch(e => alert(e.message))
 });
 
