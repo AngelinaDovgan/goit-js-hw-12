@@ -43,6 +43,7 @@ function loadImg(event) {
             } 
     current_query = inputValue;
     if (!images.length || !inputValue) {
+    btnLoadMore.style.display = 'none';
     list.innerHTML = '';
     return errorNotification();
     } else {
