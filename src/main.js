@@ -32,6 +32,7 @@ function loadImg(event) {
     getImages(inputValue, 1, 15)
         .then(data => {
             if (!data.hits || data.hits.length === 0) {
+                 btnLoadMore.style.display = 'none';
                 list.innerHTML = '';
                 return errorNotification();
             } 
