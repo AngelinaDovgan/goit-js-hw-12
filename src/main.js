@@ -23,6 +23,7 @@ loading.style.display = 'none';
 function loadImg(event) {
     event.preventDefault();
     list.innerHTML = '';
+    current_page = 1;
 
     const inputValue = input.value.trim();
    
@@ -78,7 +79,7 @@ form.addEventListener('submit', event => {
 
 btnLoadMore.addEventListener('click', event => {
     spinner.classList.remove('is-hidden');
-    current_page += 1;
+    current_page++;
     getImages(current_query, current_page, 15)
         .then(data => {
             const images = data.hits;
@@ -128,3 +129,4 @@ function information() {
         message: "We're sorry, but you've reached the end of search results."
    });
 }
+
