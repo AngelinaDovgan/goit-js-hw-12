@@ -49,7 +49,10 @@ function loadImg(event) {
         lightbox.refresh();
     }
 })
-.catch(error => console.log(error))
+.catch(error => {
+console.log(error);
+errorNotification();
+})
 .finally(() => {
 loading.style.display = 'none';
 });
@@ -89,7 +92,6 @@ btnLoadMore.addEventListener('click', event => {
             })
 
         .catch(e => alert(e.message))
-
 });
 
 
