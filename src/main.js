@@ -37,7 +37,7 @@ function loadImg(event) {
             return information();
             } 
     current_query = inputValue;
-    if (!images.length) {
+    if (!images.length || !inputValue) {
     list.innerHTML = '';
     return errorNotification();
     } else {
@@ -73,22 +73,25 @@ btnLoadMore.addEventListener('click', event => {
     getImages(current_query, current_page, 15)
         .then(data => {
             const images = data.hits;
-         if (images.length < 15) {
-            btnLoadMore.style.display = 'none';
-            return information();
-            } 
-list.insertAdjacentHTML('beforeend', createMarkup(images));
-    const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
-    captionsData: 'alt',
-    captionDelay: 300,
-    });
-            lightbox.refresh();
-            spinner.scrollIntoView;
-            spinner.classList.add('is-hidden')
-        })
-    .catch(e => alert(e.message))
+            if (images.length < 15) {
+                btnLoadMore.style.display = 'none';
+                return information();
+            } else {
+                list.insertAdjacentHTML('beforeend', createMarkup(images));
+                const lightbox = new SimpleLightbox('.gallery a.gallery-link', {
+                    captionsData: 'alt',
+                    captionDelay: 300,
+                });
+                lightbox.refresh();
+                spinner.scrollIntoView();
+                spinner.classList.add('is-hidden')
+            }
+            })
+
+        .catch(e => alert(e.message))
 
 });
+
 
 function errorNotification(){
     iziToast.error({
@@ -114,6 +117,6 @@ function information() {
        title: 'Info',
        position: "topCenter",
        backgroundColor: "blue",
-       message: "We're sorry, but you've reached the end of search results.",
+        message: "We're sorry, but you've reached the end of search results."
    });
 }
