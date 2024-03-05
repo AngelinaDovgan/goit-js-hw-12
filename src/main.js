@@ -40,7 +40,7 @@ function loadImg(event) {
             const images = data.hits;  
         if (images.length < 15) {
             btnLoadMore.style.display = 'none';
-            return information();
+            information();
             } 
     current_query = inputValue;
     if (!images.length || !inputValue) {
@@ -127,4 +127,5 @@ function information() {
         message: "We're sorry, but you've reached the end of search results."
    });
 }
+
 
